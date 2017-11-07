@@ -134,7 +134,7 @@ player.Height=pheight;
 			}*/
 			if(myobjs.objs[i].in_triangle(j,player,pl,par)){
 				bb=true;
-				break;
+				
 			}
 		}
 	}
