@@ -87,9 +87,7 @@ EXPORT bool  check_pos_all(float x,float y,float z,float h){
 	int i,j,k;
 	Myline pl;
 	Mytriangle tr;
-	//unsigned int begs,ends;
-//	float ;
-	//begs = clock( );//UTIL_GetMilliseconds( );
+	
 	//---------------------------------
 	//инициализация текущего состояния игрока
 	if(h==0){
@@ -136,6 +134,7 @@ player.Height=pheight;
 			}*/
 			if(myobjs.objs[i].in_triangle(j,player,pl,par)){
 				bb=true;
+				break;
 			}
 		}
 	}
