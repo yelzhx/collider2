@@ -1,4 +1,4 @@
-EXPORT bool  check_pos(float x,float y,float z,float h){
+EXPORT bool  check_pos(float x,float y,float z,float h){ // x,y,z координаты,  h- высота игрока 
 	bool bb=false;
 	int i,ci,cj,ki,kj,ii,colsize;
 	Myline pl;
