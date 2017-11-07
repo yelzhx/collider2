@@ -83,25 +83,7 @@ bool in_theline(float x,float z,float x0,float z0,float x1,float z1){
 	}
 	return b;
 };
-/*
-bool in_theline(float x,float z,float x0,float z0,float x1,float z1){
-bool b=false;
-float maxx,minx,maxz,minz;
-if(x0>x1){maxx=x0;minx=x1;}
-else{maxx=x1;minx=x0;}
-if(z0>z1){maxz=z0;minz=z1;}
-else{maxz=z1;minz=z0;}
-if((minx!=maxx)&&(minz!=maxz)){
-if((x>=minx)&&(x<=maxx)&&(z>=minz)&&(z<=maxz))b=true;
-}
-else if(minx!=maxx){
-if((x>=minx)&&(x<=maxx))b=true;
-}
-else {
-if((z>=minz)&&(z<=maxz))b=true;
-}
-return b;
-};*/
+
 
 bool vertcross(float y,float h,float y0,float y1){
 	bool b=false;
@@ -398,7 +380,7 @@ bool line_sphere_y(Myline l,Mysphere sp,Myline pl){
 					Z2=sqrt(R*R-(X2-b)*(X2-b))+a;
 					if((X1!=X2)||(Z1!=Z2)){
 						if(in_theline(X1,Z1,x0,z0,x1,z1)){
-							//y=y1+(y2-y1)*(x-x1)/(x2-x1)
+							
 							if(y0<y1){
 								miny=y0;
 								maxy=y1;
@@ -420,7 +402,7 @@ bool line_sphere_y(Myline l,Mysphere sp,Myline pl){
 						}
 						if(!bl){
 							if(in_theline(X2,Z2,x0,z0,x1,z1)){
-								//y=y1+(y2-y1)*(x-x1)/(x2-x1)
+							
 							if(y0<y1){
 								miny=y0;
 								maxy=y1;
@@ -456,7 +438,7 @@ bool tr_par_x(Mytriangle tr,Mypar par){
 	Mytriangle tr1;
 	i=0;
 	while((i<3)&&(!bb)){
-		//for(i=0;i<3;i++){
+		
 		if(!bb){
 			if(i==0){
 				tr1.points[0]=par.points[i];
@@ -483,7 +465,7 @@ bool tr_par_z(Mytriangle tr,Mypar par){
 	Mytriangle tr1;
 	i=0;
 	while((i<3)&&(!bb)){
-		//for(i=0;i<3;i++){
+		
 		if(!bb){
 			if(i==0){
 				tr1.points[0]=par.points[i];
@@ -834,10 +816,7 @@ bool Mytriangle::line_in_triangle_y(Myline l){
 			}
 		}
 	}
-	/*	if(bb){
-	bb=false;
-	bb=line_in_triangle(l);
-	}*/
+
 
 	return bb;
 };
@@ -862,10 +841,7 @@ bool Mytriangle::line_in_triangle_x(Myline l){
 			}
 		}
 	}
-	/*if(bb){
-	bb=false;
-	bb=line_in_triangle(l);
-	}*/
+
 	return bb;
 };
 
@@ -891,10 +867,7 @@ bool Mytriangle::line_in_triangle_z(Myline l){
 			}
 		}
 	}
-	/*if(bb){
-	bb=false;
-	bb=line_in_triangle(l);
-	}*/
+
 
 	return bb;
 };
@@ -927,7 +900,7 @@ bool Mytriangle::line_in_triangle(Myline l){
 
 			if(minx<maxx){
 				if((colxyz.x>minx)&&(colxyz.x<maxx)){
-					//b=true;
+
 				}
 				else{
 					b=false;
@@ -935,7 +908,7 @@ bool Mytriangle::line_in_triangle(Myline l){
 			}
 			if(miny<maxy){
 				if((colxyz.y>miny)&&(colxyz.y<maxy)){
-					//b=true;
+
 				}
 				else{
 					b=false;
@@ -943,7 +916,7 @@ bool Mytriangle::line_in_triangle(Myline l){
 			}
 			if(minz<maxz){
 				if((colxyz.z>minz)&&(colxyz.z<maxz)){
-					//b=true;
+
 				}
 				else{
 					b=false;
@@ -977,7 +950,7 @@ bool Mytriangle::line_in_triangle(Myline l){
 
 				if(minx<maxx){
 					if((colxyz.x>minx)&&(colxyz.x<maxx)){
-						//b=true;
+
 					}
 					else{
 						b=false;
@@ -985,7 +958,7 @@ bool Mytriangle::line_in_triangle(Myline l){
 				}
 				if(miny<maxy){
 					if((colxyz.y>miny)&&(colxyz.y<maxy)){
-						//b=true;
+
 					}
 					else{
 						b=false;
@@ -993,7 +966,7 @@ bool Mytriangle::line_in_triangle(Myline l){
 				}
 				if(minz<maxz){
 					if((colxyz.z>minz)&&(colxyz.z<maxz)){
-						//b=true;
+
 					}
 					else{
 						b=false;
@@ -1152,24 +1125,6 @@ int Myobj::loadfromstr(string str){
 			vv.loadfromstr(xx);
 			v.p.push_back(vv);
 
-			/*	x=rotmatrx[0][0]*(v.p[vi].x-xyz.x)+rotmatrx[1][0]*(v.p[vi].y-xyz.y)+rotmatrx[2][0]*(v.p[vi].z-xyz.z);
-			y=rotmatrx[0][1]*(v.p[vi].x-xyz.x)+rotmatrx[1][1]*(v.p[vi].y-xyz.y)+rotmatrx[2][1]*(v.p[vi].z-xyz.z);
-			z=rotmatrx[0][2]*(v.p[vi].x-xyz.x)+rotmatrx[1][2]*(v.p[vi].y-xyz.y)+rotmatrx[2][2]*(v.p[vi].z-xyz.z);
-			v.p[vi].x=x+xyz.x;
-			v.p[vi].y=y+xyz.y;
-			v.p[vi].z=z+xyz.z;
-			x=rotmatry[0][0]*(v.p[vi].x-xyz.x)+rotmatry[1][0]*(v.p[vi].y-xyz.y)+rotmatry[2][0]*(v.p[vi].z-xyz.z);
-			y=rotmatry[0][1]*(v.p[vi].x-xyz.x)+rotmatry[1][1]*(v.p[vi].y-xyz.y)+rotmatry[2][1]*(v.p[vi].z-xyz.z);
-			z=rotmatry[0][2]*(v.p[vi].x-xyz.x)+rotmatry[1][2]*(v.p[vi].y-xyz.y)+rotmatry[2][2]*(v.p[vi].z-xyz.z);
-			v.p[vi].x=x+xyz.x;
-			v.p[vi].y=y+xyz.y;
-			v.p[vi].z=z+xyz.z;
-			x=rotmatrz[0][0]*(v.p[vi].x-xyz.x)+rotmatrz[1][0]*(v.p[vi].y-xyz.y)+rotmatrz[2][0]*(v.p[vi].z-xyz.z);
-			y=rotmatrz[0][1]*(v.p[vi].x-xyz.x)+rotmatrz[1][1]*(v.p[vi].y-xyz.y)+rotmatrz[2][1]*(v.p[vi].z-xyz.z);
-			z=rotmatrz[0][2]*(v.p[vi].x-xyz.x)+rotmatrz[1][2]*(v.p[vi].y-xyz.y)+rotmatrz[2][2]*(v.p[vi].z-xyz.z);
-			v.p[vi].x=x+xyz.x;
-			v.p[vi].y=y+xyz.y;
-			v.p[vi].z=z+xyz.z;*/
 			vi++;
 		}
 		if(ss=="f"){
@@ -1183,12 +1138,11 @@ int Myobj::loadfromstr(string str){
 bool Myobj::in_triangle(int num,Myplayer mp,Myline pl,Mypar par){
 	bool bb=false;
 	int i;
-	//unsigned int begs,ends;
+
 	Myline l;
 	Mysphere sp;
 	Mytriangle tr;
-	//Mypar par;
-	//begs = UTIL_GetMilliseconds( );
+
 	for(i=0;i<3;i++){
 		tr.points[i]=this->v.p[this->f.ff[num].fff[i]];
 	}
@@ -1212,7 +1166,7 @@ bool Myobj::in_triangle(int num,Myplayer mp,Myline pl,Mypar par){
 		sp.oxyz=mp.point;
 		if(tr.sphere_in_y(sp,pl)){
 			bb=true;
-			//cout<<"cylindr\n";
+
 		}
 		if(bb){
 			if(tr_par_z(tr,par)){
@@ -1231,9 +1185,7 @@ bool Myobj::in_triangle(int num,Myplayer mp,Myline pl,Mypar par){
 		}
 
 	}
-	/*ends = UTIL_GetMilliseconds( )-begs;//clock( ) - begs;
-	if(ends>1)
-	printf("Vremya=%d \n",ends);*/
+
 	return bb;
 };
 
@@ -1259,7 +1211,7 @@ void Mygamemap::init(Mypoint p,Mypoint len,Mypoint c){
 	float xx,yy,zz;
 	Mycube pp;
 	Mypoint bufp;
-	//Mycube mycube;
+
 	ps.clear();
 	begp=p;
 	endp=len;
@@ -1284,7 +1236,7 @@ void Mygamemap::init(Mypoint p,Mypoint len,Mypoint c){
 	}
 	for(int i=0;i<ps.size();i++){
 		bufp=ps[i].p[0];
-		//mycube.point[0]=bufp;
+
 		bufp.x=bufp.x+eachcube.x;
 		ps[i].p[1]=bufp;
 		bufp.y=bufp.y+eachcube.y;
@@ -1363,8 +1315,7 @@ void Myobjs::find_collobj(int numps, int numobj){
 	for(i=10;i<12;i++){
 		for(int ii=0;ii<3;ii++){
 			t1.points[ii]=this->mygamemap.ps[numps].p[this->mygamemap.ps[numps].triang[i].pointnums[ii]];
-			//t1.points[ii].y=this->mygamemap.ps[numps].p[this->mygamemap.ps[numps].triang[i].pointnums[ii]].y;
-			//t1.points[ii].z=this->mygamemap.ps[numps].p[this->mygamemap.ps[numps].triang[i].pointnums[ii]].z;
+
 		}
 		for(j=0;j<objs[numobj].f.ff.size();j++){
 			bb=false;
@@ -1374,8 +1325,7 @@ void Myobjs::find_collobj(int numps, int numobj){
 			if(!bb){
 				for(int jj=0;jj<3;jj++){
 					t2.points[jj]=objs[numobj].v.p[objs[numobj].f.ff[j].fff[jj]];
-					//			t2.points[jj].y=objs[numobj].v.p[objs[numobj].f.ff[j].fff[jj]].y;
-					//			t2.points[jj].z=objs[numobj].v.p[objs[numobj].f.ff[j].fff[jj]].z;
+
 				}
 				if(t2.tr_in_tr_y(t1)){
 					b=true;
@@ -1390,13 +1340,8 @@ void Myobjs::find_collobj(int numps, int numobj){
 
 void Myobjs::creategamemap(int num){
 	int i,j;
-
 	for(i=0;i<mygamemap.ps.size();i++){
-		//	for(j=0;j<objs.size();j++){
-		//if(i==857)
 		find_collobj(i,num);
-		//	}
-		//objs[num].in_obj_cube(&mygamemap.ps[i]);
 	}
 
 };
