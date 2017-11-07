@@ -50,8 +50,7 @@ EXPORT bool  check_pos(float x,float y,float z,float h){ // x,y,z координ
 	ci=myobjs.mygamemap.getx(x);
 	cj=myobjs.mygamemap.getz(z);
 	//обход найденной клетки и соседних клеток
-	//ii=myobjs.mygamemap.getnum(ci,cj);
-	//cout<<ii<<"\n";		
+		
 	for(ki=ci-1;(!bb)&&(ki<=ci+1);ki++){
 		for(kj=cj-1;(!bb)&&(kj<=cj+1);kj++){
 			//определение номера клетки в одномерном массиве
@@ -110,31 +109,23 @@ player.Height=pheight;
 
 		par.points[0].x=player.point.x-(r2);
 		par.points[0].z=player.point.z-(r2);
-//		par.points[0].y=player.point.y-(h2-r2);
 		par.points[0].y=player.point.y-(r2);
 
 		par.points[1].x=player.point.x-(r2);
 		par.points[1].z=player.point.z-(r2);
-//		par.points[1].y=player.point.y+(h2-r2);
 		par.points[1].y=player.point.y+(r2);
 
 		par.points[2].x=player.point.x+(r2);
 		par.points[2].z=player.point.z+(r2);
-//		par.points[2].y=player.point.y+(h2-r2);
 		par.points[2].y=player.point.y+(r2);
 
 		par.points[3].x=player.point.x+(r2);
 		par.points[3].z=player.point.z+(r2);
-//		par.points[3].y=player.point.y-(h2-r2);
 		par.points[3].y=player.point.y-(r2);
 	for(i=0;(!bb)&&(i<myobjs.objs.size());i++){
 		for(j=0;(!bb)&&(j<myobjs.objs[i].f.ff.size());j++){
-		/*	for(k=0;k<3;k++){
-				tr.points[k]=myobjs.objs[i].v.p[myobjs.objs[i].f.ff[j].fff[k]];
-			}*/
 			if(myobjs.objs[i].in_triangle(j,player,pl,par)){
 				bb=true;
-				
 			}
 		}
 	}
