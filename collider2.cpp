@@ -28,22 +28,18 @@ EXPORT bool  check_pos(float x,float y,float z,float h){ // x,y,z координ
 
 		par.points[0].x=player.point.x-(r2);
 		par.points[0].z=player.point.z-(r2);
-//		par.points[0].y=player.point.y-(h2-r2);
 		par.points[0].y=player.point.y-(r2-0.0);
 
 		par.points[1].x=player.point.x-(r2);
 		par.points[1].z=player.point.z-(r2);
-//		par.points[1].y=player.point.y+(h2-r2);
 		par.points[1].y=player.point.y+(r2-0.0);
 
 		par.points[2].x=player.point.x+(r2);
 		par.points[2].z=player.point.z+(r2);
-//		par.points[2].y=player.point.y+(h2-r2);
 		par.points[2].y=player.point.y+(r2-0.0);
 
 		par.points[3].x=player.point.x+(r2);
 		par.points[3].z=player.point.z+(r2);
-//		par.points[3].y=player.point.y-(h2-r2);
 		par.points[3].y=player.point.y-(r2-0.0);
 
 	//определение номеров клеток по координатам
